@@ -6,6 +6,7 @@ colorscheme molokai
 if has('gui_running')
     set guifont=Consolas:h12:cANSI
     set guioptions-=T " Remove toolbar
+     set lines=30 columns=100
 "   set guioptions-=M " Remove filebar, menubar
 "   set guioptions-=r " Remove scrollbar
 endif
