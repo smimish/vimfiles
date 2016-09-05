@@ -13,7 +13,7 @@ if has('gui_running')
     endif
     if has('win32')
         set linespace=1
-        set guifont=Consolas:h10:cANSI
+        set guifont=Consolas:h12:cANSI
     endif
     set lines=45
     set columns=110
@@ -84,7 +84,7 @@ set statusline+=%= " Right aligning
 set statusline+=%{strlen(&ft)?&ft:'none'}, " file type
 set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
 set statusline+=%{&fileformat}              " file format
-set statusline+=\ 
+set statusline+=\  
 set statusline+=%l\/%L,%c           " line and column
 
 set guitablabel=\[%N\]\ %t\ %M " Set tab labels, first number is useful to switch to
