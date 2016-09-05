@@ -72,7 +72,7 @@ noremap <Leader>q :q!<CR>
 noremap <Leader>t :tabe<CR>
 noremap <Leader>h :set hls!<CR>
 noremap <Leader>p :CtrlP<CR>
-noremap <Leader>e :Ex<CR>
+noremap <Leader>e :Tex<CR>
 
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gd :Gdiff<CR>
@@ -110,9 +110,6 @@ call plug#end()
 """"""""""""""""""
 " CtrlP settings
 """"""""""""""""""
-" Search by filenames by default, and not by full path
-" Can be toggled on/off by pressing <c-d> inside the prompt.
-let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 1000
 let g:ctrlp_max_depth = 10
 let g:ctrlp_custom_ignore = '\v\.(tsk|o|d|dd)$'
