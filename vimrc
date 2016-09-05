@@ -61,13 +61,21 @@ let g:netrw_dirhistmax = 0
 " Making .md files to be of the Markdown syntax
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
+""""""""""""""""""
 " Key mappings
+""""""""""""""""""
 " Map space to leader
 map <Space> <Leader>
 
 noremap <Leader>w :w<CR>
 noremap <Leader>q :q!<CR>
 noremap <Leader>t :tabe<CR>
+noremap <Leader>h :set hls!<CR>
+noremap <Leader>p :CtrlP<CR>
+noremap <Leader>e :Ex<CR>
+
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gd :Gdiff<CR>
 
 " Make F5 to highlight / unhighlight
 noremap <F5> :set hls!<CR>
