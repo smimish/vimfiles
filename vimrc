@@ -1,3 +1,4 @@
+" This must be first, because it changes other options as side effect
 set nocompatible " disables vi compatibility mode
 
 syntax on
@@ -13,7 +14,7 @@ if has('gui_running')
     endif
     if has('win32')
         set linespace=1
-        set guifont=Consolas:h12:cANSI
+        set guifont=Consolas:h10:cANSI
     endif
     set lines=45
     set columns=110
@@ -37,6 +38,9 @@ set softtabstop=4
 set sw=4 " This is the level of autoindent
 set autoindent
 
+set ignorecase  " ignore case when searching
+set smartcase   " ignore case if search pattern is all lowercase, case-sensitive otherwise
+
 " makes VIM to use the common clipboard
 set clipboard=unnamed
 
@@ -48,6 +52,7 @@ set nomodeline
 set noswapfile
 set nobackup
 
+
 " makes autocomplete to be on top
 set wildmenu
 
@@ -55,8 +60,6 @@ set wildmenu
 fixdel
 set backspace=indent,eol,start
 
-" Disable saving history for netrw
-let g:netrw_dirhistmax = 0
 
 " Making .md files to be of the Markdown syntax
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
@@ -67,17 +70,36 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 " Map space to leader
 map <Space> <Leader>
 
-noremap <Leader>w :w<CR>
-noremap <Leader>q :q!<CR>
+" File commands
+noremap <Leader>fs :w<CR>
+noremap <Leader>fS :wall<CR>
+noremap <silent> <Leader>ft :call ToggleVExplorer()<CR>
+noremap <silent> <Leader>ff :CtrlP<CR>
+
+" Window commands
+nmap <silent> <Leader>wk :wincmd k<CR>
+nmap <silent> <Leader>wK :wincmd K<CR>
+nmap <silent> <Leader>wj :wincmd j<CR>
+nmap <silent> <Leader>wJ :wincmd J<CR>
+nmap <silent> <Leader>wh :wincmd h<CR>
+nmap <silent> <Leader>wH :wincmd H<CR>
+nmap <silent> <Leader>wl :wincmd l<CR>
+nmap <silent> <Leader>wL :wincmd L<CR>
+
+nmap <silent> <Leader>ws :wincmd s<CR>
+nmap <silent> <Leader>wv :wincmd v<CR>
+nmap <silent> <Leader>wc :wincmd c<CR>
+
+noremap <Leader>qs :xa<CR>
+noremap <Leader>qq :q!<CR>
 noremap <Leader>t :tabe<CR>
 noremap <Leader>h :set hls!<CR>
-noremap <Leader>p :CtrlP<CR>
-noremap <Leader>e :Tex<CR>
 
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gd :Gdiff<CR>
 
 " Make F5 to highlight / unhighlight
+noremap <F4> :tabe %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 noremap <F5> :set hls!<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
@@ -92,7 +114,7 @@ set statusline+=%= " Right aligning
 set statusline+=%{strlen(&ft)?&ft:'none'}, " file type
 set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
 set statusline+=%{&fileformat}              " file format
-set statusline+=\  
+set statusline+=\ 
 set statusline+=%l\/%L,%c           " line and column
 
 set guitablabel=\[%N\]\ %t\ %M " Set tab labels, first number is useful to switch to
@@ -105,6 +127,8 @@ else
 endif
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'justinmk/vim-syntax-extra'
 call plug#end()
 
 """"""""""""""""""
@@ -115,5 +139,33 @@ let g:ctrlp_max_depth = 10
 let g:ctrlp_custom_ignore = '\v\.(tsk|o|d|dd)$'
 set wildignore=*.tsk,*.o,*.d,*.dd " Algo setting the same for vimgrep
 
-" Change to the defautl dir
-:cd D:\Notes
+
+""""""""""""""""""
+" Netrw settings
+""""""""""""""""""
+let g:netrw_liststyle=3
+let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_winsize=25 " Make netrw window to be 25% of the window size
+let g:netrw_banner=0 " Disable banner on top
+let g:netrw_dirhistmax = 0 " Disable saving history for netrw
+
+" Toggle Vexplore
+function! ToggleVExplorer()
+if exists("t:expl_buf_num")
+    let expl_win_num = bufwinnr(t:expl_buf_num)
+        if expl_win_num != -1
+            let cur_win_nr = winnr()
+            exec expl_win_num . 'wincmd w'
+            close
+            exec cur_win_nr . 'wincmd w'
+            unlet t:expl_buf_num
+        else
+            unlet t:expl_buf_num
+        endif
+    else
+        exec 'wincmd w'
+        Vexplore
+        let t:expl_buf_num = bufnr("%")
+    endif
+endfunction
