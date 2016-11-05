@@ -2,7 +2,8 @@
 set nocompatible " disables vi compatibility mode
 
 syntax on
-colorscheme molokai
+" colorscheme molokai
+colorscheme base16-monokai 
 
 if has('gui_running')
     set guioptions-=T " Remove toolbar
@@ -14,7 +15,7 @@ if has('gui_running')
     endif
     if has('win32')
         set linespace=1
-        set guifont=Consolas:h10:cANSI
+        set guifont=Inconsolata:h12:cANSI
     endif
     set lines=45
     set columns=110
@@ -90,9 +91,19 @@ nmap <silent> <Leader>ws :wincmd s<CR>
 nmap <silent> <Leader>wv :wincmd v<CR>
 nmap <silent> <Leader>wc :wincmd c<CR>
 
+nmap <silent> <Leader>wd :wincmd q<CR>
+
+" Buffer commands
+nmap <silent> <Leader><tab> :b#<CR>
+
+" Config commands
+nmap <silent> <Leader>tn :set number!<CR>
+nmap <silent> <Leader>tl :set wrap!<CR>
+
+
 noremap <Leader>qs :xa<CR>
 noremap <Leader>qq :q!<CR>
-noremap <Leader>t :tabe<CR>
+" noremap <Leader>t :tabe<CR>
 noremap <Leader>h :set hls!<CR>
 
 noremap <Leader>gs :Gstatus<CR>
