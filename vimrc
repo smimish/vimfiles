@@ -15,7 +15,7 @@ if has('gui_running')
     endif
     if has('win32')
         set linespace=1
-        set guifont=Inconsolata:h12:cANSI
+        set guifont=Inconsolata:h13:cANSI
     endif
     set lines=45
     set columns=110
@@ -138,7 +138,6 @@ else
 endif
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'justinmk/vim-syntax-extra'
 call plug#end()
 
