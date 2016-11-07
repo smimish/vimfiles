@@ -3,18 +3,17 @@ set nocompatible " disables vi compatibility mode
 
 syntax on
 " colorscheme molokai
-colorscheme base16-monokai 
+" let base16colorspace=256
+" colorscheme base16-monokai
 
 if has('gui_running')
     set guioptions-=T " Remove toolbar
 "   set guioptions-=M " Remove filebar, menubar
 "   set guioptions-=r " Remove scrollbar
     if has('unix')
-        set linespace=4
-        set guifont=Consolas\ 13
+        set guifont=Inconsolata\ Medium\ 14
     endif
     if has('win32')
-        set linespace=1
         set guifont=Inconsolata:h13:cANSI
     endif
     set lines=45
