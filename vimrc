@@ -3,17 +3,14 @@ set nocompatible " disables vi compatibility mode
 
 syntax on
 " colorscheme molokai
-" let base16colorspace=256
-" colorscheme base16-monokai
+let base16colorspace=256
 colorscheme base16-monokai
 
 
 if has('gui_running')
-    set guioptions-=T " Remove toolbar
-"   set guioptions-=M " Remove filebar, menubar
-"   set guioptions-=r " Remove scrollbar
-   if has('unix')
-       " set guifont=Consolas\ 13
+    set guioptions=i " Remove toolbal/menubar/filebar
+    if has('unix')
+        " set guifont=Consolas\ 13
         set guifont=Inconsolata\ Medium\ 12
     endif
     if has('win32')
@@ -106,6 +103,8 @@ nmap <silent> <Leader><tab> :b#<CR>
 " Config/toggle commands
 nmap <silent> <Leader>tn :set number!<CR>
 nmap <silent> <Leader>tl :set wrap!<CR>
+
+nmap <silent> <Leader>Tm :call ToggleGUIMenu()<CR>
 
 " Tab commands
 nmap <silent> <Leader>tt :tabe<CR>
@@ -200,4 +199,12 @@ if exists("t:expl_buf_num")
         Vexplore
         let t:expl_buf_num = bufnr("%")
     endif
+endfunction
+
+function! ToggleGUIMenu()
+  if &guioptions=='i'
+    exec('set guioptions=im')
+  else
+    exec('set guioptions=i')
+  endif
 endfunction
