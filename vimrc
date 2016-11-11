@@ -19,7 +19,7 @@ set t_Co=256
 colorscheme monokai
 
 if has('gui_running')
-    set guioptions=i " Remove toolbal/menubar/filebar
+    set guioptions=ie " Remove toolbal/menubar/filebar
     if has('unix')
         " set guifont=Consolas\ 13
         set guifont=Inconsolata\ Medium\ 12
@@ -203,9 +203,9 @@ if exists("t:expl_buf_num")
 endfunction
 
 function! ToggleGUIMenu()
-  if &guioptions=='i'
-    exec('set guioptions=im')
+  if &guioptions=='ie'
+    exec('set guioptions=iem')
   else
-    exec('set guioptions=i')
+    exec('set guioptions=ie')
   endif
 endfunction
