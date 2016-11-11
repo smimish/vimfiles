@@ -5,16 +5,18 @@ syntax on
 " colorscheme molokai
 " let base16colorspace=256
 " colorscheme base16-monokai
+colorscheme base16-monokai
 
 if has('gui_running')
     set guioptions-=T " Remove toolbar
 "   set guioptions-=M " Remove filebar, menubar
 "   set guioptions-=r " Remove scrollbar
-    if has('unix')
+   if has('unix')
+       " set guifont=Consolas\ 13
         set guifont=Inconsolata\ Medium\ 14
     endif
     if has('win32')
-        set guifont=Inconsolata:h13:cANSI
+        set guifont=Inconsolata:h12:cANSI
     endif
     set lines=45
     set columns=110
@@ -22,8 +24,8 @@ endif
 
 set encoding=utf-8
 set fileencoding=utf-8
-set ff=unix " Force unix file format
-set fileformats=unix,dos " Save new files in unix on all platforms
+set ff=unix " Force Unix file format
+set fileformats=unix,dos " Save new files in Unix on all platforms
 
 set ttyfast
 
@@ -53,7 +55,7 @@ set noswapfile
 set nobackup
 
 
-" makes autocomplete to be on top
+" makes auto-complete to be on top
 set wildmenu
 
 " enabling backspace to behave as in normal editors
@@ -99,18 +101,21 @@ nmap <silent> <Leader><tab> :b#<CR>
 nmap <silent> <Leader>tn :set number!<CR>
 nmap <silent> <Leader>tl :set wrap!<CR>
 
+" Search commands 
+noremap <Leader>sc :set hls!<CR>
 
-noremap <Leader>qs :xa<CR>
-noremap <Leader>qq :q!<CR>
-" noremap <Leader>t :tabe<CR>
-noremap <Leader>h :set hls!<CR>
-
+" GIT Commands
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gd :Gdiff<CR>
 
+" Quit commands
+noremap <Leader>qs :xa<CR>
+noremap <Leader>qq :qa!<CR>
+" noremap <Leader>t :tabe<CR>
+
 " Make F5 to highlight / unhighlight
-noremap <F4> :tabe %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 noremap <F5> :set hls!<CR>
+noremap <F4> :tabe %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
 
@@ -146,7 +151,7 @@ call plug#end()
 let g:ctrlp_max_files = 1000
 let g:ctrlp_max_depth = 10
 let g:ctrlp_custom_ignore = '\v\.(tsk|o|d|dd)$'
-set wildignore=*.tsk,*.o,*.d,*.dd " Algo setting the same for vimgrep
+set wildignore=*.tsk,*.o,*.d,*.dd " Also setting the same for vimgrep
 
 
 """"""""""""""""""
@@ -155,8 +160,8 @@ set wildignore=*.tsk,*.o,*.d,*.dd " Algo setting the same for vimgrep
 let g:netrw_liststyle=3
 let g:netrw_browse_split=4
 let g:netrw_altv=1
-let g:netrw_winsize=25 " Make netrw window to be 25% of the window size
-let g:netrw_banner=0 " Disable banner on top
+let g:netrw_winsize=25     " Make netrw window to be 25% of the window size
+let g:netrw_banner=0       " Disable banner on top
 let g:netrw_dirhistmax = 0 " Disable saving history for netrw
 
 " Toggle Vexplore
