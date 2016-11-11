@@ -1,11 +1,22 @@
 " This must be first, because it changes other options as side effect
 set nocompatible " disables vi compatibility mode
 
-syntax on
-" colorscheme molokai
-let base16colorspace=256
-colorscheme base16-monokai
+" Plugins
+if has('win32')
+    call plug#begin('~/vimfiles/bundle')
+else
+    call plug#begin('~/.vim/bundle')
+endif
+Plug 'tpope/vim-fugitive'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'justinmk/vim-syntax-extra'
+Plug 'crusoexia/vim-monokai'
+call plug#end()
 
+syntax on
+set t_Co=256 
+" colorscheme molokai
+colorscheme monokai
 
 if has('gui_running')
     set guioptions=i " Remove toolbal/menubar/filebar
@@ -151,16 +162,6 @@ set statusline+=%l\/%L,%c           " line and column
 
 set guitablabel=\[%N\]\ %t\ %M " Set tab labels, first number is useful to switch to
 
-" Plugins
-if has('win32')
-    call plug#begin('~/vimfiles/bundle')
-else
-    call plug#begin('~/.vim/bundle')
-endif
-Plug 'tpope/vim-fugitive'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'justinmk/vim-syntax-extra'
-call plug#end()
 
 """"""""""""""""""
 " CtrlP settings
