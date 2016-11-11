@@ -7,13 +7,14 @@ syntax on
 " colorscheme base16-monokai
 colorscheme base16-monokai
 
+
 if has('gui_running')
     set guioptions-=T " Remove toolbar
 "   set guioptions-=M " Remove filebar, menubar
 "   set guioptions-=r " Remove scrollbar
    if has('unix')
        " set guifont=Consolas\ 13
-        set guifont=Inconsolata\ Medium\ 14
+        set guifont=Inconsolata\ Medium\ 12
     endif
     if has('win32')
         set guifont=Inconsolata:h12:cANSI
@@ -36,8 +37,8 @@ set number
 set expandtab
 set tabstop=4
 set shiftwidth=4
-set softtabstop=4
-set sw=4 " This is the level of autoindent
+set softtabstop=-1 " Use value of shiftwidth
+set shiftwidth=0   " autoident. 0 - use tabstop value 
 set autoindent
 
 set ignorecase  " ignore case when searching
@@ -77,6 +78,11 @@ noremap <Leader>fs :w<CR>
 noremap <Leader>fS :wall<CR>
 noremap <silent> <Leader>ft :call ToggleVExplorer()<CR>
 noremap <silent> <Leader>ff :CtrlP<CR>
+if has('win32')
+    noremap <silent> <Leader>fed :e ~/vimfiles/vimrc<CR>
+else
+    noremap <silent> <Leader>fed :e ~/.vim/vimrc<CR>
+endif
 
 " Window commands
 nmap <silent> <Leader>wk :wincmd k<CR>
@@ -90,16 +96,28 @@ nmap <silent> <Leader>wL :wincmd L<CR>
 
 nmap <silent> <Leader>ws :wincmd s<CR>
 nmap <silent> <Leader>wv :wincmd v<CR>
-nmap <silent> <Leader>wc :wincmd c<CR>
 
-nmap <silent> <Leader>wd :wincmd q<CR>
+nmap <silent> <Leader>wd :wincmd c<CR>
+nmap <silent> <Leader>wD :wincmd o<CR>
 
 " Buffer commands
 nmap <silent> <Leader><tab> :b#<CR>
 
-" Config commands
+" Config/toggle commands
 nmap <silent> <Leader>tn :set number!<CR>
 nmap <silent> <Leader>tl :set wrap!<CR>
+
+" Tab commands
+nmap <silent> <Leader>tt :tabe<CR>
+nmap <silent> <Leader>1 :tabnext 1<CR>
+nmap <silent> <Leader>2 :tabnext 2<CR>
+nmap <silent> <Leader>3 :tabnext 3<CR>
+nmap <silent> <Leader>4 :tabnext 4<CR>
+nmap <silent> <Leader>5 :tabnext 5<CR>
+nmap <silent> <Leader>6 :tabnext 6<CR>
+nmap <silent> <Leader>7 :tabnext 7<CR>
+nmap <silent> <Leader>8 :tabnext 8<CR>
+nmap <silent> <Leader>9 :tabnext 9<CR>
 
 " Search commands 
 noremap <Leader>sc :set hls!<CR>
@@ -108,10 +126,10 @@ noremap <Leader>sc :set hls!<CR>
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gd :Gdiff<CR>
 
+
 " Quit commands
 noremap <Leader>qs :xa<CR>
 noremap <Leader>qq :qa!<CR>
-" noremap <Leader>t :tabe<CR>
 
 " Make F5 to highlight / unhighlight
 noremap <F5> :set hls!<CR>
