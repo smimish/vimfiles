@@ -105,6 +105,8 @@ nmap <silent> <Leader>wL :wincmd L<CR>
 nmap <silent> <Leader>ws :wincmd s<CR>
 nmap <silent> <Leader>wv :wincmd v<CR>
 
+nmap <silent> <Leader>ww :wincmd w<CR>
+
 nmap <silent> <Leader>wd :wincmd c<CR>
 nmap <silent> <Leader>wD :wincmd o<CR>
 
@@ -136,7 +138,6 @@ noremap <Leader>sc :set hls!<CR>
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gd :Gdiff<CR>
 
-
 " Quit commands
 noremap <Leader>qs :xa<CR>
 noremap <Leader>qq :qa!<CR>
@@ -161,7 +162,6 @@ set statusline+=\
 set statusline+=%l\/%L,%c           " line and column
 
 set guitablabel=\[%N\]\ %t\ %M " Set tab labels, first number is useful to switch to
-
 
 """"""""""""""""""
 " CtrlP settings
