@@ -10,12 +10,13 @@ endif
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'mileszs/ack.vim'
 call plug#end()
 
 syntax on
 set t_Co=256 
-" colorscheme monokai
-colorscheme molokai
+colorscheme monokai
+" colorscheme molokai
 
 set linespace=1
 
@@ -135,6 +136,7 @@ nmap <silent> <Leader>9 :tabnext 9<CR>
 
 " Search commands 
 noremap <Leader>sc :set hls!<CR>
+noremap <Leader>/  :Ack<Space>
 
 " GIT Commands
 noremap <Leader>gs :Gstatus<CR>
@@ -211,3 +213,8 @@ function! ToggleGUIMenu()
     exec('set guioptions=ie')
   endif
 endfunction
+
+" Ag searcher
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
