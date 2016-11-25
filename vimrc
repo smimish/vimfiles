@@ -17,11 +17,14 @@ set t_Co=256
 " colorscheme monokai
 colorscheme molokai
 
+set linespace=1
+
 if has('gui_running')
     set guioptions=ie " Remove toolbal/menubar/filebar
     if has('unix')
-        " set guifont=Consolas\ 13
+        " set guifont=Consolas\ 10
         set guifont=Inconsolata\ Medium\ 11
+        set linespace=2
     endif
     if has('win32')
         set guifont=Inconsolata:h12:cANSI
