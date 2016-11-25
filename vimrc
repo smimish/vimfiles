@@ -10,19 +10,18 @@ endif
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'justinmk/vim-syntax-extra'
-Plug 'crusoexia/vim-monokai'
 call plug#end()
 
 syntax on
 set t_Co=256 
-" colorscheme molokai
-colorscheme monokai
+" colorscheme monokai
+colorscheme molokai
 
 if has('gui_running')
     set guioptions=ie " Remove toolbal/menubar/filebar
     if has('unix')
         " set guifont=Consolas\ 13
-        set guifont=Inconsolata\ Medium\ 12
+        set guifont=Inconsolata\ Medium\ 11
     endif
     if has('win32')
         set guifont=Inconsolata:h12:cANSI
