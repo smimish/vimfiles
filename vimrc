@@ -137,6 +137,7 @@ nmap <silent> <Leader>9 :tabnext 9<CR>
 " Search commands 
 noremap <Leader>sc :set hls!<CR>
 noremap <Leader>/  :Ack<Space>
+noremap <Leader>*  :Ack<Space><C-R><C-W><CR>
 
 " GIT Commands
 noremap <Leader>gs :Gstatus<CR>
