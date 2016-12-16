@@ -87,7 +87,7 @@ map <Space> <Leader>
 " File commands
 noremap <Leader>fs :w<CR>
 noremap <Leader>fS :wall<CR>
-noremap <silent> <Leader>ft :call ToggleVExplorer()<CR>
+noremap <silent> <Leader>ft :Lexplore<CR>
 noremap <silent> <Leader>ff :CtrlP<CR>
 if has('win32')
     noremap <silent> <Leader>fed :e ~/vimfiles/vimrc<CR>
@@ -115,6 +115,7 @@ nmap <silent> <Leader>wD :wincmd o<CR>
 
 " Buffer commands
 nmap <silent> <Leader><tab> :b#<CR>
+nmap <silent> <Leader>bb :ls<CR>
 
 " Config/toggle commands
 nmap <silent> <Leader>tn :set number!<CR>
@@ -186,26 +187,6 @@ let g:netrw_altv=1
 let g:netrw_winsize=25     " Make netrw window to be 25% of the window size
 let g:netrw_banner=0       " Disable banner on top
 let g:netrw_dirhistmax = 0 " Disable saving history for netrw
-
-" Toggle Vexplore
-function! ToggleVExplorer()
-if exists("t:expl_buf_num")
-    let expl_win_num = bufwinnr(t:expl_buf_num)
-        if expl_win_num != -1
-            let cur_win_nr = winnr()
-            exec expl_win_num . 'wincmd w'
-            close
-            exec cur_win_nr . 'wincmd w'
-            unlet t:expl_buf_num
-        else
-            unlet t:expl_buf_num
-        endif
-    else
-        exec 'wincmd w'
-        Vexplore
-        let t:expl_buf_num = bufnr("%")
-    endif
-endfunction
 
 function! ToggleGUIMenu()
   if &guioptions=='ie'
