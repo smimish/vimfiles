@@ -175,7 +175,7 @@ set guitablabel=\[%N\]\ %t\ %M " Set tab labels, first number is useful to switc
 let g:ctrlp_max_files = 1000
 let g:ctrlp_max_depth = 10
 let g:ctrlp_custom_ignore = '\v\.(tsk|o|d|dd)$'
-set wildignore=*.tsk,*.o,*.d,*.dd " Also setting the same for vimgrep
+set wildignore=*.tsk,*.o,*.d,*.dd,*.pyc " Also setting the same for vimgrep
 
 
 """"""""""""""""""
