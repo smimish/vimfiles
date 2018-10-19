@@ -11,6 +11,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'mileszs/ack.vim'
+Plug 'crusoexia/vim-monokai'
 call plug#end()
 
 syntax on

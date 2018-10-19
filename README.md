@@ -5,3 +5,4 @@ VIM config file which uses key mappings from spacemacs https://github.com/syl20b
 The Leader key is set to `SPACE`. Similar functionalities have the same key binding everywhere thanks to a clearly defined set of conventions.
 
 Clone to ~/.vim
+Run :PlugInstall on the first run
